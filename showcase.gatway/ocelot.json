@@ -1,0 +1,29 @@
+{
+  "Routes": [
+    {
+      "ServiceName": "",
+      "DownstreamPathTemplate": "/swagger/v3/swagger.json",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8081
+        }
+      ],
+      "UpstreamPathTemplate": "/swagger",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 1,
+      //"RequestIdKey": "swagger",
+      "Key": "swagger"
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "swagger"
+      ],
+      "UpstreamPathTemplate": "/swagger-detail",
+      "Aggregator": "SwaggerDetailAggregator"
+    }
+  ]
+}
