@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "7bb8907b-e467-408b-aa51-cf36d2fc5e2e",
+		"name": "API Getway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7474579"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"login\": \"willimar\",\r\n  \"password\": \"123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7254/authenticate",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh-Token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJHcm91cElkIjoiYzhiYmJkNDAtMTBlYS00ZjRkLTkzMjItM2E1ODdkODVjZDk4IiwiVGVuYW50SWQiOiIwZmUyNmQ2Ni0yYjdlLTQ2MjItYjQ1Zi1kY2ViMDk3ZDQwMGIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL2V4cGlyYXRpb24iOiIwNy8xMy8yMDIzIDAxOjUwOjU1IiwibmFtZWlkIjoiNDJhOTk5YzctMDFlNy00ZjRkLTk0ZDYtMGFlMGQ1ZmU0MWZiIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc3lzdGVtIjoiNDNGNUM3NURBMzVFMjBDM0U2REQ4QTVBNTA4OTE5NEUiLCJuYmYiOjE2ODkwNDAyNTUsImV4cCI6MTY4OTIxMzA1NSwiaWF0IjoxNjg5MDQwMjU1LCJpc3MiOiJOb21lUXVhbHF1ZXIiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.t_s_OkqSPc3XXCVQqjmswWtZqrI6H05f-cgnFeP0L9E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"login\": \"willimar\",\r\n  \"password\": \"123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7254/refresh-token",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
