@@ -1,56 +1,103 @@
 {
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Scheme": "http",
+      "Host": "host.docker.internal",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  },
   "Routes": [
     {
-      "ServiceName": "",
+      "ServiceName": "showcase-authenticate",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
       "DownstreamPathTemplate": "/api/v3/Authenticate/authenticate",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "host.docker.internal",
-          "Port": 8081
-        }
-      ],
       "UpstreamPathTemplate": "/authenticate",
       "UpstreamHttpMethod": [ "Post" ],
       "Priority": 1,
       "RequestIdKey": "authenticate"
     },
     {
-      "ServiceName": "",
+      "ServiceName": "showcase-authenticate",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
       "DownstreamPathTemplate": "/api/v3/Authenticate/refresh-token",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "host.docker.internal",
-          "Port": 8081
-        }
-      ],
       "UpstreamPathTemplate": "/refresh-token",
       "UpstreamHttpMethod": [ "Get" ],
       "Priority": 1,
       "RequestIdKey": "refresh-token"
     },
     {
-      "ServiceName": "",
+      "ServiceName": "showcase-authenticate",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "DownstreamPathTemplate": "/api/v3/User/register-account",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/register-account",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Priority": 1,
+      "RequestIdKey": "register-account"
+    },
+    {
+      "ServiceName": "showcase-authenticate",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "DownstreamPathTemplate": "/api/v3/User/register-user",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/register-user",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Priority": 1,
+      "RequestIdKey": "register-user"
+    },
+    {
+      "ServiceName": "showcase-authenticate",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "DownstreamPathTemplate": "/api/v3/User/change-password",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/change-password",
+      "UpstreamHttpMethod": [ "Put" ],
+      "Priority": 1,
+      "RequestIdKey": "change-password"
+    },
+    {
+      "ServiceName": "showcase-authenticate",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
       "DownstreamPathTemplate": "/swagger/v3/swagger.json",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 8081
-        }
-      ],
       "UpstreamPathTemplate": "/swagger",
       "UpstreamHttpMethod": [ "Get" ],
       "Priority": 2,
-      //"RequestIdKey": "swagger",
       "Key": "swagger"
+    },
+    {
+      "ServiceName": "showcase-authenticate",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "DownstreamPathTemplate": "/swagger/v3/swagger.json",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/swagger1",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 2,
+      "Key": "swagger1"
     }
   ],
   "Aggregates": [
     {
       "RouteKeys": [
-        "swagger"
+        "swagger",
+        "swagger1"
       ],
       "UpstreamPathTemplate": "/swagger-detail",
       "Aggregator": "SwaggerDetailAggregator"

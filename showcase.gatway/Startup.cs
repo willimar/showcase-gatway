@@ -30,7 +30,8 @@ namespace ShowCase.Broker
             });
 
             services.AddOcelot(Configuration)
-                .AddSingletonDefinedAggregator<SwaggerDetailAggregator>();
+                .AddSingletonDefinedAggregator<SwaggerDetailAggregator>()
+                .AddConsul();
         }
 
         public static void Configure(this IApplicationBuilder app, IWebHostEnvironment env)

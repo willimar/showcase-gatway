@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "7bb8907b-e467-408b-aa51-cf36d2fc5e2e",
+		"_postman_id": "b053e6e9-a029-4216-9f34-1353d89ded64",
 		"name": "API Getway",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "7474579"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -73,6 +72,110 @@
 							"port": "7254",
 							"path": [
 								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register-Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"willimar\",\r\n  \"password\": \"123456\",\r\n  \"userEmail\": \"willimar@gmail.com\",\r\n  \"fullName\": \"Willimar Augusto Rocha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7254/register-account",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"register-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register-User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6IndpbGxpbWFyIiwiVXNlckVtYWlsIjoid2lsbGltYXJAZ21haWwuY29tIiwiRnVsbE5hbWUiOiJXaWxsaW1hciBBdWd1c3RvIFJvY2hhIiwiR3JvdXBJZCI6ImMwYzBiNzI2LWI0NDktNGRmMC05M2UxLTRiYzk5N2Q3ODBjYSIsIlRlbmFudElkIjoiMTYwMTBhYWMtZTk3My00ZDUyLWIxNjUtNWFjN2U2ZWI5NWRmIiwiQ3JlYXRlZCI6IjA3LzExLzIwMjMgMTY6MzY6MDMiLCJNb2RpZmllZCI6IjA3LzExLzIwMjMgMTY6MzY6MDMiLCJTdGF0dXMiOiJEcmFmdCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZXhwaXJhdGlvbiI6IjA3LzEyLzIwMjMgMDA6Mzk6MjYiLCJuYW1laWQiOiIyN2M0ZTNlMS01MDgxLTRiOWItODc0Ni02NDk5YTk2MGFlMzEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zeXN0ZW0iOiI0M0Y1Qzc1REEzNUUyMEMzRTZERDhBNUE1MDg5MTk0RSIsIm5iZiI6MTY4OTA5MzU2NiwiZXhwIjoxNjg5MTIyMzY2LCJpYXQiOjE2ODkwOTM1NjYsImlzcyI6Ik5vbWVRdWFscXVlciIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.oaCXOf37e-3Ngmf2LYdfvaO3y76OqdisZg7GMqUKr8M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"thiago\",\r\n  \"password\": \"123456\",\r\n  \"userEmail\": \"thiaguinho.rochaa@gmail.com\",\r\n  \"fullName\": \"Thiago Soares Rocha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7254/register-user",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"register-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change-Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6IndpbGxpbWFyIiwiVXNlckVtYWlsIjoid2lsbGltYXJAZ21haWwuY29tIiwiRnVsbE5hbWUiOiJXaWxsaW1hciBBdWd1c3RvIFJvY2hhIiwiR3JvdXBJZCI6ImMwYzBiNzI2LWI0NDktNGRmMC05M2UxLTRiYzk5N2Q3ODBjYSIsIlRlbmFudElkIjoiMTYwMTBhYWMtZTk3My00ZDUyLWIxNjUtNWFjN2U2ZWI5NWRmIiwiQ3JlYXRlZCI6IjA3LzExLzIwMjMgMTY6MzY6MDMiLCJNb2RpZmllZCI6IjA3LzExLzIwMjMgMTY6MzY6MDMiLCJTdGF0dXMiOiJEcmFmdCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZXhwaXJhdGlvbiI6IjA3LzEyLzIwMjMgMDA6Mzk6MjYiLCJuYW1laWQiOiIyN2M0ZTNlMS01MDgxLTRiOWItODc0Ni02NDk5YTk2MGFlMzEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zeXN0ZW0iOiI0M0Y1Qzc1REEzNUUyMEMzRTZERDhBNUE1MDg5MTk0RSIsIm5iZiI6MTY4OTA5MzU2NiwiZXhwIjoxNjg5MTIyMzY2LCJpYXQiOjE2ODkwOTM1NjYsImlzcyI6Ik5vbWVRdWFscXVlciIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.oaCXOf37e-3Ngmf2LYdfvaO3y76OqdisZg7GMqUKr8M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"oldPassword\": \"123456\",\r\n  \"newPassword\": \"123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7254/change-password",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7254",
+							"path": [
+								"change-password"
 							]
 						}
 					},
