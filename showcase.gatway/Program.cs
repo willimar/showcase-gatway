@@ -1,3 +1,4 @@
+using Ocelot.DependencyInjection;
 using ShowCase.Broker;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,9 @@ builder.WebHost
             .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
             .AddJsonFile("appsettings.json", true, true)
             .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-            .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("./Configurations/ocelot.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("./Configurations/showcase-autenticate.json", optional: false, reloadOnChange: true)
+            .AddOcelot("./Configurations/", hostingContext.HostingEnvironment)
             .AddEnvironmentVariables();
     });
 

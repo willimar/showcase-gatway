@@ -1,0 +1,21 @@
+{
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Scheme": "http",
+      "Host": "host.docker.internal",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  },
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "swagger",
+        "swagger1"
+      ],
+      "UpstreamPathTemplate": "/swagger-detail",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Aggregator": "SwaggerDetailAggregator"
+    }
+  ]
+}

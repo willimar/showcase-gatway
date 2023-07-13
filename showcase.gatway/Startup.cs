@@ -1,14 +1,8 @@
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using System.Runtime.CompilerServices;
-using showcase.gatway.Aggregators;
 using Ocelot.Provider.Consul;
-using Ocelot.Administration;
+using showcase.gatway.Aggregators;
 using showcase.gatway.Delegates;
 using showcase.gatway.Delegates.Showcase.Authenticate;
 
