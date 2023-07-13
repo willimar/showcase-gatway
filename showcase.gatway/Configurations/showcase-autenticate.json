@@ -1,6 +1,7 @@
 {
   "Routes": [
     {
+      "RequestIdKey": "authenticate",
       "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
@@ -9,10 +10,10 @@
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/authenticate",
       "UpstreamHttpMethod": [ "Post" ],
-      "Priority": 1,
-      "RequestIdKey": "authenticate"
+      "Priority": 1
     },
     {
+      "RequestIdKey": "refresh-token",
       "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
@@ -21,10 +22,10 @@
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/refresh-token",
       "UpstreamHttpMethod": [ "Get" ],
-      "Priority": 1,
-      "RequestIdKey": "refresh-token"
+      "Priority": 1
     },
     {
+      "RequestIdKey": "register-account",
       "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
@@ -34,12 +35,12 @@
       "UpstreamPathTemplate": "/register-account",
       "UpstreamHttpMethod": [ "Post" ],
       "Priority": 1,
-      "RequestIdKey": "register-account",
       "DelegatingHandlers": [
         "RegisterAccountHandler"
       ]
     },
     {
+      "Key": "register-user",
       "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
@@ -49,48 +50,23 @@
       "UpstreamPathTemplate": "/register-user",
       "UpstreamHttpMethod": [ "Post" ],
       "Priority": 1,
-      "RequestIdKey": "register-user",
       "DelegatingHandlers": [
         "RegisterAccountHandler"
       ]
     },
     {
+      "RequestIdKey": "change-password",
       "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
-      "DownstreamPathTemplate": "/api/v3/User/change-password",
+      "DownstreamPathTemplate": "/change-password",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/change-password",
       "UpstreamHttpMethod": [ "Put" ],
       "Priority": 1,
-      "RequestIdKey": "change-password"
-    },
-    {
-      "ServiceName": "showcase-authenticate",
-      "LoadBalancerOptions": {
-        "Type": "LeastConnection"
-      },
-      "DownstreamPathTemplate": "/swagger/v3/swagger.json",
-      "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/swagger",
-      "UpstreamHttpMethod": [ "Post" ],
-      "Priority": 2,
-      "Key": "swagger"
-    },
-    {
-      "ServiceName": "showcase-authenticate",
-      "LoadBalancerOptions": {
-        "Type": "LeastConnection"
-      },
-      "DownstreamPathTemplate": "/swagger/v3/swagger.json",
-      "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/swagger1",
-      "UpstreamHttpMethod": [ "Post" ],
-      "Priority": 2,
-      "Key": "swagger1",
       "DelegatingHandlers": [
-        "SampleHandler"
+        "RegisterAccountHandler"
       ]
     }
   ]

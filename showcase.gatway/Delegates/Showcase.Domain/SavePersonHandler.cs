@@ -1,9 +1,9 @@
 ﻿using showcase.gatway.Extensions;
 using System.Net;
 
-namespace showcase.gatway.Delegates.Showcase.Authenticate
+namespace showcase.gatway.Delegates.Showcase.Domain
 {
-    public class RegisterAccountHandler : DelegatingHandler
+    public class SavePersonHandler : DelegatingHandler
     {
         const string Url = "host.docker.internal";
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -29,5 +29,7 @@ namespace showcase.gatway.Delegates.Showcase.Authenticate
 
             return new HttpResponseMessage(HttpStatusCode.Accepted) { Content = new StringContent("Data sent to server.") };
         }
+
+
     }
 }

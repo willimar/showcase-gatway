@@ -10,12 +10,12 @@
   "Aggregates": [
     {
       "RouteKeys": [
-        "swagger",
-        "swagger1"
+        "register-user",
+        "save-person"
       ],
       "UpstreamPathTemplate": "/swagger-detail",
       "UpstreamHttpMethod": [ "Post" ],
-      "Aggregator": "SwaggerDetailAggregator"
+      "Aggregator": "SaveUserAggregator"
     }
   ]
 }

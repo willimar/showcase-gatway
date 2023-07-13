@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Delegates\Showcase.Domain\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Configurations\showcase-autenticate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
