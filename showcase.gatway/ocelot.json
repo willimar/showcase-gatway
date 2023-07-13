@@ -1,5 +1,7 @@
 {
   "GlobalConfiguration": {
+    //"AdministrationPath": "/administration",
+    //"RequestIdKey": "OcRequestId",
     "ServiceDiscoveryProvider": {
       "Scheme": "http",
       "Host": "host.docker.internal",
@@ -76,7 +78,7 @@
       "DownstreamPathTemplate": "/swagger/v3/swagger.json",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/swagger",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Post" ],
       "Priority": 2,
       "Key": "swagger"
     },
@@ -88,9 +90,12 @@
       "DownstreamPathTemplate": "/swagger/v3/swagger.json",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/swagger1",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Post" ],
       "Priority": 2,
-      "Key": "swagger1"
+      "Key": "swagger1",
+      "DelegatingHandlers": [
+        "SampleHandler"
+      ]
     }
   ],
   "Aggregates": [
@@ -100,6 +105,7 @@
         "swagger1"
       ],
       "UpstreamPathTemplate": "/swagger-detail",
+      "UpstreamHttpMethod": [ "Post" ],
       "Aggregator": "SwaggerDetailAggregator"
     }
   ]

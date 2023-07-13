@@ -8,6 +8,8 @@ using Ocelot.Middleware;
 using System.Runtime.CompilerServices;
 using showcase.gatway.Aggregators;
 using Ocelot.Provider.Consul;
+using Ocelot.Administration;
+using showcase.gatway.Delegates;
 
 namespace ShowCase.Broker
 {
@@ -31,7 +33,10 @@ namespace ShowCase.Broker
 
             services.AddOcelot(Configuration)
                 .AddSingletonDefinedAggregator<SwaggerDetailAggregator>()
-                .AddConsul();
+                .AddConsul()
+                .AddDelegatingHandler<SampleHandler>()
+                //.AddAdministration("/administration", "secret")
+                ;
         }
 
         public static void Configure(this IApplicationBuilder app, IWebHostEnvironment env)
