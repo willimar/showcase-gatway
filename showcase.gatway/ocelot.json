@@ -44,7 +44,10 @@
       "UpstreamPathTemplate": "/register-account",
       "UpstreamHttpMethod": [ "Post" ],
       "Priority": 1,
-      "RequestIdKey": "register-account"
+      "RequestIdKey": "register-account",
+      "DelegatingHandlers": [
+        "RegisterAccountHandler"
+      ]
     },
     {
       "ServiceName": "showcase-authenticate",
