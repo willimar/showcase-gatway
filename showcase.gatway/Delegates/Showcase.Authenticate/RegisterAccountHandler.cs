@@ -5,6 +5,7 @@ namespace showcase.gatway.Delegates.Showcase.Authenticate
 {
     public class RegisterAccountHandler : DelegatingHandler
     {
+        const string Url = "host.docker.internal";
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (request.Content is null)
@@ -12,9 +13,12 @@ namespace showcase.gatway.Delegates.Showcase.Authenticate
                 return new HttpResponseMessage(HttpStatusCode.BadRequest) { Content = new StringContent("No body found.") };
             }
 
-            var url = @"localhost";
+            if (request.RequestUri is null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.BadRequest) { Content = new StringContent("Invalid URL.") };
+            }
 
-            PublishOption publishOption = new(ChannelOption.Factory("register-account", url))
+            PublishOption publishOption = new(ChannelOption.Factory(request.RequestUri.AbsolutePath[1..], Url))
             {
                 Body = new ReadOnlyMemory<byte>(await request.Content.ReadAsByteArrayAsync(cancellationToken)),
                 Headers = request.Headers.ToDictionary(),
@@ -23,7 +27,7 @@ namespace showcase.gatway.Delegates.Showcase.Authenticate
 
             publishOption.BasicPublish();
 
-            return new HttpResponseMessage(System.Net.HttpStatusCode.Accepted);
+            return new HttpResponseMessage(HttpStatusCode.Accepted) { Content = new StringContent("Data sent to server.") };
         }
     }
 }
