@@ -13,7 +13,7 @@
         "register-user",
         "save-person"
       ],
-      "UpstreamPathTemplate": "/swagger-detail",
+      "UpstreamPathTemplate": "/save-user",
       "UpstreamHttpMethod": [ "Post" ],
       "Aggregator": "SaveUserAggregator"
     }

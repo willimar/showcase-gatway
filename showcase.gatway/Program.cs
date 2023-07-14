@@ -13,6 +13,7 @@ builder.WebHost
             .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
             .AddJsonFile("./Configurations/ocelot.json", optional: false, reloadOnChange: true)
             .AddJsonFile("./Configurations/showcase-autenticate.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("./Configurations/showcase-domain.json", optional: false, reloadOnChange: true)
             .AddOcelot("./Configurations/", hostingContext.HostingEnvironment)
             .AddEnvironmentVariables();
     });

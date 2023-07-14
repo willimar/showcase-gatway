@@ -26,6 +26,8 @@ namespace ShowCase.Broker
                 options.AllowSynchronousIO = true;
             });
 
+            services.AddSingleton<DelegateOption>(Configuration.GetSection(nameof(DelegateOption)).Get<DelegateOption>());
+
             services.AddOcelot(Configuration)
                 .AddSingletonDefinedAggregator<SwaggerDetailAggregator>()
                 .AddConsul()

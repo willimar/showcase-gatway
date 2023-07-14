@@ -36,7 +36,22 @@
       "UpstreamHttpMethod": [ "Post" ],
       "Priority": 1,
       "DelegatingHandlers": [
-        "RegisterAccountHandler"
+        "DelegateBase"
+      ]
+    },
+    {
+      "Key": "save-person",
+      "ServiceName": "showcase-domain",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "DownstreamPathTemplate": "/save-person",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/save-person",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Priority": 1,
+      "DelegatingHandlers": [
+        "DelegateBase"
       ]
     },
     {
@@ -51,7 +66,7 @@
       "UpstreamHttpMethod": [ "Post" ],
       "Priority": 1,
       "DelegatingHandlers": [
-        "RegisterAccountHandler"
+        "DelegateBase"
       ]
     },
     {
