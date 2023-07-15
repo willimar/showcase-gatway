@@ -6,16 +6,15 @@
       "Port": 8500,
       "Type": "Consul"
     }
-  },
-  "Aggregates": [
-    {
-      "RouteKeys": [
-        "register-user",
-        "save-person"
-      ],
-      "UpstreamPathTemplate": "/save-user",
-      "UpstreamHttpMethod": [ "Post" ],
-      "Aggregator": "SaveUserAggregator"
-    }
-  ]
+  }
+  //"Aggregates": [
+  //  {
+  //    "RouteKeys": [
+  //      "register-user",
+  //      "save-person"
+  //    ],
+  //    "UpstreamPathTemplate": "/save-user",
+  //    "Aggregator": "SaveUserAggregator"
+  //  }
+  //]
 }

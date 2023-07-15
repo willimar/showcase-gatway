@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b053e6e9-a029-4216-9f34-1353d89ded64",
+		"_postman_id": "17ff7722-12e1-4eec-864e-cb7e2eb0fff5",
 		"name": "API Getway",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7474579"
 	},
 	"item": [
 		{

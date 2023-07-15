@@ -5,6 +5,8 @@ using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
 using showcase.gatway.Aggregators;
 using showcase.gatway.Delegates;
+using showcase.gatway.Delegates.showcase_authenticate;
+using showcase.gatway.Delegates.showcase_domain;
 
 namespace ShowCase.Broker
 {
@@ -44,6 +46,8 @@ namespace ShowCase.Broker
                 .AddSingletonDefinedAggregator<SwaggerDetailAggregator>()
                 .AddConsul()
                 .AddDelegatingHandler<DelegateBase>()
+                .AddDelegatingHandler<RegisterUserHandle>()
+                .AddDelegatingHandler<SavePersonHandle>()
                 //.AddAdministration("/administration", "secret")
                 ;
         }

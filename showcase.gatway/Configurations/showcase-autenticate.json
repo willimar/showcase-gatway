@@ -2,7 +2,7 @@
   "Routes": [
     {
       "RequestIdKey": "authenticate",
-      "ServiceName": "authentication-service",
+      "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
@@ -14,7 +14,7 @@
     },
     {
       "RequestIdKey": "refresh-token",
-      "ServiceName": "authentication-service",
+      "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
@@ -26,7 +26,7 @@
     },
     {
       "RequestIdKey": "register-account",
-      "ServiceName": "authentication-service",
+      "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
@@ -40,38 +40,39 @@
       ]
     },
     {
-      "Key": "save-person",
+      "RequestIdKey": "save-user",
+      "DownstreamScheme": "http",
       "ServiceName": "showcase-domain",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
-      "DownstreamPathTemplate": "/save-person",
-      "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/save-person",
+      "DownstreamPathTemplate": "/api/v1.1/Person/save-person",
+      "UpstreamPathTemplate": "/save-user",
       "UpstreamHttpMethod": [ "Post" ],
       "Priority": 1,
       "DelegatingHandlers": [
-        "DelegateBase"
+        "SavePersonHandle",
+        "RegisterUserHandle"
       ]
     },
-    {
-      "Key": "register-user",
-      "ServiceName": "authentication-service",
-      "LoadBalancerOptions": {
-        "Type": "LeastConnection"
-      },
-      "DownstreamPathTemplate": "/register-user",
-      "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/register-user",
-      "UpstreamHttpMethod": [ "Post" ],
-      "Priority": 1,
-      "DelegatingHandlers": [
-        "DelegateBase"
-      ]
-    },
+    //{
+    //  "Key": "register-user",
+    //  "ServiceName": "showcase-authenticate",
+    //  "LoadBalancerOptions": {
+    //    "Type": "LeastConnection"
+    //  },
+    //  "DownstreamPathTemplate": "/register-user",
+    //  "DownstreamScheme": "http",
+    //  "UpstreamPathTemplate": "/register-user",
+    //  "UpstreamHttpMethod": [ "Post" ],
+    //  "Priority": 1,
+    //  "DelegatingHandlers": [
+    //    "DelegateBase"
+    //  ]
+    //},
     {
       "RequestIdKey": "change-password",
-      "ServiceName": "authentication-service",
+      "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },

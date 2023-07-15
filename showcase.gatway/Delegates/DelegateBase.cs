@@ -9,12 +9,14 @@ namespace showcase.gatway.Delegates
     }
 
     public delegate void Execute(PublishOption publishOption);
+    public delegate void Before(ref string actionName);
 
     public class DelegateBase : DelegatingHandler
     {
         private readonly DelegateOption _option;
 
         public event Execute? BeforeExecute;
+        public event Before? PrepareAction;
 
         public DelegateBase(DelegateOption option)
         {
@@ -33,7 +35,14 @@ namespace showcase.gatway.Delegates
                 return new HttpResponseMessage(HttpStatusCode.BadRequest) { Content = new StringContent("Invalid URL.") };
             }
 
-            PublishOption publishOption = new(ChannelOption.Factory(request.RequestUri.AbsolutePath[1..], _option.RabbitUrl))
+            var actionName = request.RequestUri.AbsolutePath[1..];
+
+            if (PrepareAction is not null)
+            {
+                PrepareAction(ref actionName);
+            }
+
+            PublishOption publishOption = new(ChannelOption.Factory(actionName, _option.RabbitUrl))
             {
                 Body = new ReadOnlyMemory<byte>(await request.Content.ReadAsByteArrayAsync(cancellationToken)),
                 Headers = request.Headers.ToDictionary(),
