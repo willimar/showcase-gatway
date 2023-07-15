@@ -1,10 +1,10 @@
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
 using showcase.gatway.Aggregators;
 using showcase.gatway.Delegates;
-using showcase.gatway.Delegates.Showcase.Authenticate;
 
 namespace ShowCase.Broker
 {
@@ -26,13 +26,24 @@ namespace ShowCase.Broker
                 options.AllowSynchronousIO = true;
             });
 
+            services.AddCors(delegate (CorsOptions options)
+            {
+                options.AddPolicy("_AllowAnyOrigins", delegate (CorsPolicyBuilder builder)
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+                options.AddPolicy("_OptionsPolicy", delegate (CorsPolicyBuilder builder)
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+
             services.AddSingleton<DelegateOption>(Configuration.GetSection(nameof(DelegateOption)).Get<DelegateOption>());
 
             services.AddOcelot(Configuration)
                 .AddSingletonDefinedAggregator<SwaggerDetailAggregator>()
                 .AddConsul()
-                .AddDelegatingHandler<SampleHandler>()
-                .AddDelegatingHandler<RegisterAccountHandler>()
+                .AddDelegatingHandler<DelegateBase>()
                 //.AddAdministration("/administration", "secret")
                 ;
         }
@@ -40,6 +51,9 @@ namespace ShowCase.Broker
         public static void Configure(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();
+
+            app.UseCors("_AllowAnyOrigins");
+            app.UseCors("_OptionsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

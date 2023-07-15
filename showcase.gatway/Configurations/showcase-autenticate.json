@@ -2,7 +2,7 @@
   "Routes": [
     {
       "RequestIdKey": "authenticate",
-      "ServiceName": "showcase-authenticate",
+      "ServiceName": "authentication-service",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
@@ -14,7 +14,7 @@
     },
     {
       "RequestIdKey": "refresh-token",
-      "ServiceName": "showcase-authenticate",
+      "ServiceName": "authentication-service",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
@@ -26,7 +26,7 @@
     },
     {
       "RequestIdKey": "register-account",
-      "ServiceName": "showcase-authenticate",
+      "ServiceName": "authentication-service",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
@@ -56,7 +56,7 @@
     },
     {
       "Key": "register-user",
-      "ServiceName": "showcase-authenticate",
+      "ServiceName": "authentication-service",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
@@ -71,7 +71,7 @@
     },
     {
       "RequestIdKey": "change-password",
-      "ServiceName": "showcase-authenticate",
+      "ServiceName": "authentication-service",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
