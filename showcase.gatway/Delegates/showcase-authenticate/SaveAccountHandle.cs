@@ -1,8 +1,8 @@
-﻿namespace showcase.gatway.Delegates.showcase_domain
+﻿namespace showcase.gatway.Delegates.showcase_authenticate
 {
-    public class SavePersonHandle : DelegateBase
+    public class SaveAccountHandle : DelegateBase
     {
-        public SavePersonHandle(DelegateOption option) : base(option)
+        public SaveAccountHandle(DelegateOption option) : base(option)
         {
             this.PrepareAction += this.InternalPrepareAction;
         }
@@ -11,7 +11,7 @@
         {
             actionName.Clear();
             actionName.Add("save-person");
-            actionName.Add("register-user");
+            actionName.Add("register-account");
         }
     }
 }

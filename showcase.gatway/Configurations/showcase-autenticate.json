@@ -13,6 +13,24 @@
       "Priority": 1
     },
     {
+      "RequestIdKey": "status-authenticate",
+      "ServiceName": "",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7098
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v3/Authenticate/status-authenticate",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/status-authenticate",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 1,
+      "AddHeadersToRequest": {
+        "Authorization": "Bearer {token}"
+      }
+    },
+    {
       "RequestIdKey": "refresh-token",
       "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
@@ -25,18 +43,18 @@
       "Priority": 1
     },
     {
-      "RequestIdKey": "register-account",
+      "RequestIdKey": "save-account",
       "ServiceName": "showcase-authenticate",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
       "DownstreamPathTemplate": "/register-account",
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/register-account",
+      "UpstreamPathTemplate": "/save-account",
       "UpstreamHttpMethod": [ "Post" ],
       "Priority": 1,
       "DelegatingHandlers": [
-        "DelegateBase"
+        "SaveAccountHandle"
       ]
     },
     {
@@ -51,8 +69,7 @@
       "UpstreamHttpMethod": [ "Post" ],
       "Priority": 1,
       "DelegatingHandlers": [
-        "SavePersonHandle",
-        "RegisterUserHandle"
+        "SavePersonHandle"
       ]
     },
     //{

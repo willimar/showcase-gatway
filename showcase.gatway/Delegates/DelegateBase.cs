@@ -1,5 +1,6 @@
 ﻿using showcase.gatway.Extensions;
 using System.Net;
+using System.Net.Http.Formatting;
 
 namespace showcase.gatway.Delegates
 {
@@ -9,7 +10,7 @@ namespace showcase.gatway.Delegates
     }
 
     public delegate void Execute(PublishOption publishOption);
-    public delegate void Before(ref string actionName);
+    public delegate void Before(List<string> actionName);
 
     public class DelegateBase : DelegatingHandler
     {
@@ -36,27 +37,30 @@ namespace showcase.gatway.Delegates
             }
 
             var actionName = request.RequestUri.AbsolutePath[1..];
+            var actionList = new List<string> { actionName };
 
             if (PrepareAction is not null)
             {
-                PrepareAction(ref actionName);
+                PrepareAction(actionList);
             }
 
-            PublishOption publishOption = new(ChannelOption.Factory(actionName, _option.RabbitUrl))
+            foreach (var item in actionList)
             {
-                Body = new ReadOnlyMemory<byte>(await request.Content.ReadAsByteArrayAsync(cancellationToken)),
-                Headers = request.Headers.ToDictionary(),
-            };
+                PublishOption publishOption = new(ChannelOption.Factory(item, _option.RabbitUrl))
+                {
+                    Body = new ReadOnlyMemory<byte>(await request.Content.ReadAsByteArrayAsync(cancellationToken)),
+                    Headers = request.Headers.ToDictionary(),
+                };
 
-            if (BeforeExecute is not null)
-            {
-                BeforeExecute(publishOption);
+                if (BeforeExecute is not null)
+                {
+                    BeforeExecute(publishOption);
+                }
+
+                publishOption.BasicPublish();
             }
 
-            publishOption.BasicPublish();
-
-
-            return new HttpResponseMessage(HttpStatusCode.Accepted) { Content = new StringContent("Data sent to server.") };
+            return new HttpResponseMessage(HttpStatusCode.OK) { Content = new ObjectContent(type: actionList.GetType(), value: actionList, formatter: new JsonMediaTypeFormatter()) };
         }
     }
 }

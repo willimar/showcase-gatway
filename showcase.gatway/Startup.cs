@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
-using showcase.gatway.Aggregators;
 using showcase.gatway.Delegates;
 using showcase.gatway.Delegates.showcase_authenticate;
 using showcase.gatway.Delegates.showcase_domain;
@@ -43,11 +42,9 @@ namespace ShowCase.Broker
             services.AddSingleton<DelegateOption>(Configuration.GetSection(nameof(DelegateOption)).Get<DelegateOption>());
 
             services.AddOcelot(Configuration)
-                .AddSingletonDefinedAggregator<SwaggerDetailAggregator>()
                 .AddConsul()
-                .AddDelegatingHandler<DelegateBase>()
-                .AddDelegatingHandler<RegisterUserHandle>()
                 .AddDelegatingHandler<SavePersonHandle>()
+                .AddDelegatingHandler<SaveAccountHandle>()
                 //.AddAdministration("/administration", "secret")
                 ;
         }
