@@ -72,21 +72,6 @@
         "SavePersonHandle"
       ]
     },
-    //{
-    //  "Key": "register-user",
-    //  "ServiceName": "showcase-authenticate",
-    //  "LoadBalancerOptions": {
-    //    "Type": "LeastConnection"
-    //  },
-    //  "DownstreamPathTemplate": "/register-user",
-    //  "DownstreamScheme": "http",
-    //  "UpstreamPathTemplate": "/register-user",
-    //  "UpstreamHttpMethod": [ "Post" ],
-    //  "Priority": 1,
-    //  "DelegatingHandlers": [
-    //    "DelegateBase"
-    //  ]
-    //},
     {
       "RequestIdKey": "change-password",
       "ServiceName": "showcase-authenticate",

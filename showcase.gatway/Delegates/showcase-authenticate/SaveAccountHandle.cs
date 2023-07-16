@@ -10,7 +10,6 @@
         private void InternalPrepareAction(List<string> actionName)
         {
             actionName.Clear();
-            actionName.Add("save-person");
             actionName.Add("register-account");
         }
     }
